@@ -1,0 +1,108 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model IEnumerable<Exam.Models.Employee>
+
+<div>
+    <div class="row">
+        <div class="col-md-8 m-auto">
+            @*<form asp-action="SearchEmployee" asp-controller="Employee" method="post">
+                <div class="row mb-2">
+                    <label class="col-form-label">Employee Id</label>
+                    <input class="form-control" type="number" />
+                </div>
+
+                <div class="row mb-2 d-flex justify-content-between">
+                    <input type="submit" value="Show Salary With Bonus" class="btn btn-outline-primary col-md-3" asp-action="SearchEmployee" />
+                    <button id="highlightSalaryBtn" type="button" class="btn btn-outline-primary col-md-3">Highlight Salary</button>
+                    @*<input type="submit" id="highlightSalaryBtn" value="Highlight Salary" class="btn btn-outline-primary col-md-3" />*@
+                    @*<input type="submit" value="Highlight Bonus" class="btn btn-outline-primary col-md-3" />
+                </div>
+           
+            </form>*@
+
+        <form asp-action="SearchEmployee" asp-controller="Employee" method="post">
+            <div class="row mb-2">
+                <label class="col-form-label">Employee Id</label>
+                <input class="form-control" type="number" name="employeeId" />
+            </div>
+
+            <div class="row mb-2 d-flex justify-content-between">
+                <input type="submit" value="Show Salary With Bonus" class="btn btn-outline-primary col-md-3" asp-action="SearchEmployee" />
+                <button id="highlightSalaryBtn" type="button" class="btn btn-outline-primary col-md-3">Highlight Salary</button>
+                <input type="submit" value="Highlight Name" class="btn btn-outline-primary col-md-3" />
+            </div>
+        </form>
+
+        </div>
+    </div>
+</div>
+
+
+<table class="table" id="outputTable">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JoinDate)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Designation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.JoinDate)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*<script>
+    // Wait for the DOM to be ready
+    $(document).ready(function () {
+
+        // Event listener for "Highlight Salary" button click
+        $("#highlightSalaryBtn").click(function () {
+            // Select all salary amount elements in the output table and change their color to green
+            //$("#outputTable td:nth-child(4)").css("color", "green");
+            $("#outputTable td:nth-child(4)").css("color", "green");
+        });
+
+    });
+</script>*@
+@*<script>
+    $(document).ready(function () {
+        $("#highlightSalaryBtn").click(function () {
+            $('#outputTable td:nth-child(4)').css('color', 'green');
+        });
+    });
+</script>*@
